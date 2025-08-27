@@ -4,18 +4,20 @@ import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
 ---
 
-<footer class="animate">
+<footer class="animate flex justify-between items-center">
   <Container>
-    <div class="relative">
-      <div class="absolute right-0 -top-20">
-        <BackToTop />
-      </div>
-    </div>
-    <div class="flex justify-between items-center">
-      <div>
-        Predloge pošlji na <a href="mailto:hey@lukakopajtic.com" target="_blank">hey@lukakopajtic.com</a>
 
-      </div>
+<div class="flex justify-center items-center gap-4">
+      <!-- <p class="text-lg">
+Predloge pošlji na 
+<a 
+  href="mailto:hey@lukakopajtic.com" 
+  target="_blank" 
+  class="underline decoration-2 underline-offset-8 text-black/80 hover:text-black transition-colors"
+>
+  hey@lukakopajtic.com
+</a>
+</p>-->
       <div class="flex flex-wrap gap-1 items-center">
         <button
           id="light-theme-button"
@@ -87,6 +89,12 @@ import BackToTop from "@components/BackToTop.astro";
             <line x1="12" y1="17" x2="12" y2="21"></line>
           </svg>
         </button>
+      </div>
+    </div>
+
+        <div class="relative pt-8">
+      <div>
+        <BackToTop />
       </div>
     </div>
   </Container>

@@ -17,400 +17,394 @@ import eva_hajsek from "../images/people/eva-hajsek.jpg";
 import jaka_fefer from "../images/people/jaka-fefer.jpg";
 import jakob_plahutnik from "../images/people/jakob-plahutnik.jpg";
 import jona_novljan from "../images/people/jona-novljan.jpg";
-
-
-
-
 const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
-
+.filter(post => !post.data.draft)
+.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+.slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
-
+.filter(project => !project.data.draft)
+.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+.slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 const allwork = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
-
+.sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+.slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
 const work = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
+allwork.map(async (item) => {
+const { Content } = await item.render();
+return { ...item, Content };
+})
 );
-
 ---
-
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Container>
-    <div class="flex flex-col items-center gap-24">
-
-      <!----------------------------------------------------Koledar -->
-      <section id="koledar">
-<h1>Skupni koledar</h1>
-    <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=2&ctz=Europe%2FBelgrade&mode=WEEK&showTz=0&showCalendars=0&showPrint=0&showDate=0&title&showTitle=0&src=NWI4ZmNkYjVlMDdjN2UwZTkyYmYyNDRlMGM3NTRhNzlkOTA1Mzg1Mzc5MGQxYWQxNjVhYTIyMjhkOTQ3Yzc5ZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%2333b679" style="border:solid 1px #777" width="1000" height="800" frameborder="0" scrolling="no"></iframe>
-    <div class="space-y-16">
-</section>
+   <Container class="px-12 mx-12">
+      <div class="flex flex-col items-center gap-24 mx-12 px-12">
 
 
 
-<!----------------------------------------------------Ljudje -->
-<section id="ljudje" class="p-4 sm:p-6">
- <h1>Ljudje</h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4 md:gap-6">
+        
+         <!----------------------------------------------------Koledar -->
+<section id="koledar" class="relative">
+  <h1 class="px-12">Skupni koledar</h1>
 
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={katja_gruden}
-    alt="Katja Gruden"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Katja Gruden</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Gerbičeva
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">💃 Salsa</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">⛰ Hribi</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={lukakopajtic}
-    alt="Luka Kopajtič"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Luka Kopajtič</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Gerbičeva
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">⛰ Hribi</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🧗 Plezanje</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={petra_morgan}
-    alt="Petra Morgan"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Petra Morgan</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Črnuče
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏐 Odbojka</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🚴 Kolesarjenje</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={jakob_plahutnik}
-    alt="Jakob Plahutnik"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jakob Plahutnik</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Črnuče
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏐 Odbojka</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🚴 Kolesarjenje</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={jona_novljan}
-    alt="Jona Novljan"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jona Novljan</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Vrhovci
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={ana_rogelj}
-    alt="Ana Rogelj"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Ana Rogelj</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Vrhovci
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={jaka_fefer}
-    alt="Jaka Fefer"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jaka Fefer</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Vrhnika
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={tilen_tkalec}
-    alt="Tilen Tkalec"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Tilen Tkalec</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Črnuče
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={nejc_ahtik}
-    alt="Nejc Ahtik"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Nejc Ahtik</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Zagreb / Ljubljana
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏋️ Fitnes</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🧭 Orientacija</span>
-  </div>
-</div>
-
-<!--Človek -->
-<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
-  <Image
-    src={eva_hajsek}
-    alt="Eva Hajšek"
-    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
-    loading="lazy"
-  />
-  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Eva Hajšek</h3>
-  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
-    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
-    </svg>
-    Šiška
-  </p>
-  <div class="flex flex-wrap justify-center gap-2">
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏃 Tek</span>
-    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder</span>
-  </div>
-</div>
-
-
+  <div class="w-screen h-[800px] relative -mx-4 md:-mx-0"> <!-- span full viewport width -->
+    <iframe
+      src="https://calendar.google.com/calendar/embed?height=800&wkst=2&ctz=Europe%2FBelgrade&mode=WEEK&showTz=0&showCalendars=0&showPrint=0&showDate=0&title&showTitle=0&src=NWI4ZmNkYjVlMDdjN2UwZTkyYmYyNDRlMGM3NTRhNzlkOTA1Mzg1Mzc5MGQxYWQxNjVhYTIyMjhkOTQ3Yzc5ZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%2333b679"
+      class="absolute top-0 left-0 w-full h-full border border-gray-400"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- <section>
-        <article class="space-y-4">
-          <p class="animate">
-            I am a minimal, seo friendly, accessible portfolio and blog for developers. 
-            I am an even more lightweight version of my popular theme
-            <Link href="https://github.com/markhorn-dev/astro-sphere" aria-label="Astro Sphere on Github" external>
-              Astro Sphere
-            </Link>.
-            I have a lighthouse scores of 100 across the board for performance, 
-            accesibility, best practices and SEO.
-          </p>
-          <p class="animate">
-            I come packed with full type safety, a sitemap, an rss feed, markdown 
-            and mdx support (use components in your markdown) through astro integrations.
-            I am styled with tailwind and come preconfigured with light, dark and 
-            system/os theme preferences out of the box.
-          </p>
-          <p class="animate">
-            Visit
-            <Link href="https://github.com/markhorn-dev/astro-nano" aria-label="Astro Nano on Github" external>
-              Astro Nano on Github
-            </Link>
-            to fork the repository, read the docs or one-click deploy on Vercel or Netlify. 
-          </p>
-        </article>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href="/work">
-            See all work
-          </Link>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
-            <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href="/projects">
-            See all projects
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Connect
-        </h5>
-        <article>
-          <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media or send me an email.
-          </p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
+         <!----------------------------------------------------Ljudje sekcija-->
+         <section id="ljudje" class="p-4 sm:p-6">
+            <h1>Ljudje</h1>
+            <!-- Ljudje galerija -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4 md:gap-6">
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={katja_gruden}
+                     alt="Katja Gruden"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Katja Gruden</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Gerbičeva
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">💃 Salsa</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">⛰ Hribi</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={lukakopajtic}
+                     alt="Luka Kopajtič"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Luka Kopajtič</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Gerbičeva
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">⛰ Hribi</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🧗 Plezanje</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={petra_morgan}
+                     alt="Petra Morgan"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Petra Morgan</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Črnuče
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏐 Odbojka</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🚴 Kolesarjenje</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={jakob_plahutnik}
+                     alt="Jakob Plahutnik"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jakob Plahutnik</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Črnuče
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏐 Odbojka</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🚴 Kolesarjenje</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={jona_novljan}
+                     alt="Jona Novljan"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jona Novljan</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Vrhovci
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={ana_rogelj}
+                     alt="Ana Rogelj"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Ana Rogelj</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Vrhovci
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={jaka_fefer}
+                     alt="Jaka Fefer"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jaka Fefer</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Vrhnika
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={tilen_tkalec}
+                     alt="Tilen Tkalec"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Tilen Tkalec</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Črnuče
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={nejc_ahtik}
+                     alt="Nejc Ahtik"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Nejc Ahtik</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Zagreb / Ljubljana
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏋️ Fitnes</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🧭 Orientacija</span>
+                  </div>
+               </div>
+               <!--Človek -->
+               <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+                  <Image
+                     src={eva_hajsek}
+                     alt="Eva Hajšek"
+                     class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+                     loading="lazy"
+                     />
+                  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Eva Hajšek</h3>
+                  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+                     <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd"/>
+                     </svg>
+                     Šiška
+                  </p>
+                  <div class="flex flex-wrap justify-center gap-2">
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏃 Tek</span>
+                     <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder</span>
+                  </div>
+               </div>
+            </div>
+            <!------------------ Info kartice -->
+            <div class="mt-6 space-y-4 pt-12">
+               <!-- Info -->  
+               <div class="p-4 bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg text-left">
+                  <p class="text-base text-green-800 dark:text-green-200">
+                     V to skupino si samodejno dodan, ko prideš <strong></strong>5x na GayNight</strong>
+                  </p>
+               </div>
+               <!-- Info -->  
+               <div class="p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-lg text-left">
+                  <p class="text-base text-red-800 dark:text-red-200">
+                     Iz te skupine si samodejno zbrisan, če ne prideš na noben dogodek <strong>3 mesece</strong>
+                  </p>
+               </div>
+               <!-- Info -->
+               <div class="p-4 bg-white dark:bg-neutral-700 border border-gray-200 dark:border-neutral-600 rounded-lg text-left">
+                  <p class="text-base text-gray-800 dark:text-neutral-200">
+                     Svoje informacije ali sliko lahko spremeniš
+                     <a href="mailto:hey@lukakopajtic.com" target="_blank" class="underline decoration-1 underline-offset-3 hover:text-black dark:hover:text-white transition-colors">
+                     tukaj</a>
+                  </p>
+               </div>
+            </div>
+         </section>
+         <!-- <section>
+            <article class="space-y-4">
+              <p class="animate">
+                I am a minimal, seo friendly, accessible portfolio and blog for developers. 
+                I am an even more lightweight version of my popular theme
+                <Link href="https://github.com/markhorn-dev/astro-sphere" aria-label="Astro Sphere on Github" external>
+                  Astro Sphere
+                </Link>.
+                I have a lighthouse scores of 100 across the board for performance, 
+                accesibility, best practices and SEO.
+              </p>
+              <p class="animate">
+                I come packed with full type safety, a sitemap, an rss feed, markdown 
+                and mdx support (use components in your markdown) through astro integrations.
+                I am styled with tailwind and come preconfigured with light, dark and 
+                system/os theme preferences out of the box.
+              </p>
+              <p class="animate">
+                Visit
+                <Link href="https://github.com/markhorn-dev/astro-nano" aria-label="Astro Nano on Github" external>
+                  Astro Nano on Github
+                </Link>
+                to fork the repository, read the docs or one-click deploy on Vercel or Netlify. 
+              </p>
+            </article>
+            </section>
+            
+            <section class="animate space-y-6">
+            <div class="flex flex-wrap gap-y-2 items-center justify-between">
+              <h5 class="font-semibold text-black dark:text-white">
+                Latest posts
+              </h5>
+              <Link href="/blog">
+                See all posts
               </Link>
-              {"/"}
-            </li>
-          ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
-          </li>
-        </ul>
-      </section>-->
-    </div>
-    </div>
-  </Container>
+            </div>
+            <ul class="flex flex-col gap-4">
+              {blog.map(post => (
+                <li>
+                  <ArrowCard entry={post} />
+                </li>
+              ))}
+            </ul>
+            </section>
+            
+            <section class="animate space-y-6">
+            <div class="flex flex-wrap gap-y-2 items-center justify-between">
+              <h5 class="font-semibold text-black dark:text-white">
+                Work Experience
+              </h5>
+              <Link href="/work">
+                See all work
+              </Link>
+            </div>
+            <ul class="flex flex-col space-y-4">
+              {work.map(entry => (
+                <li>
+                  <div class="text-sm opacity-75">
+                    {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                  </div>
+                  <div class="font-semibold text-black dark:text-white">
+                    {entry.data.company}
+                  </div>
+                  <div class="text-sm opacity-75">
+                    {entry.data.role}
+                  </div>
+                  <article>
+                    <entry.Content />
+                  </article>
+                </li>
+              ))}
+            </ul>
+            </section>
+            
+            <section class="animate space-y-6">
+            <div class="flex flex-wrap gap-y-2 items-center justify-between">
+              <h5 class="font-semibold text-black dark:text-white">
+                Recent projects
+              </h5>
+              <Link href="/projects">
+                See all projects
+              </Link>
+            </div>
+            <ul class="flex flex-col gap-4">
+              {projects.map(project => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))}
+            </ul>
+            </section>
+            
+            <section class="animate space-y-4">
+            <h5 class="font-semibold text-black dark:text-white">
+              Let's Connect
+            </h5>
+            <article>
+              <p>
+                If you want to get in touch with me about something or just to say hi,
+                reach out on social media or send me an email.
+              </p>
+            </article>
+            <ul class="flex flex-wrap gap-2">
+              {SOCIALS.map(SOCIAL => (
+                <li class="flex gap-x-2 text-nowrap">
+                  <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                    {SOCIAL.NAME}
+                  </Link>
+                  {"/"}
+                </li>
+              ))}
+              <li class="line-clamp-1">
+                <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+                  {SITE.EMAIL}
+                </Link>
+              </li>
+            </ul>
+            </section>-->
+      </div>
+      </div>
+   </Container>
 </PageLayout>
