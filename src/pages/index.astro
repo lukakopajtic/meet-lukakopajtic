@@ -3,9 +3,23 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import { Image } from 'astro:assets';
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
+import katja_gruden from "../images/people/katja-gruden.jpg";
+import lukakopajtic from "../images/people/lukakopajtic.png";
+import nejc_ahtik from "../images/people/nejc-ahtik.jpg";
+import petra_morgan from "../images/people/petra-morgan.jpg";
+import tilen_tkalec from "../images/people/tilen-tkalec.jpg";
+import ana_rogelj from "../images/people/ana-rogelj.jpg";
+import eva_hajsek from "../images/people/eva-hajsek.jpg";
+import jaka_fefer from "../images/people/jaka-fefer.jpg";
+import jakob_plahutnik from "../images/people/jakob-plahutnik.jpg";
+import jona_novljan from "../images/people/jona-novljan.jpg";
+
+
+
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -32,11 +46,253 @@ const work = await Promise.all(
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
-      Hi, I'm Nano <span class="text-xl">👋🏻</span> 
-    </h4>
+    <div class="flex flex-col items-center gap-24">
+
+      <!----------------------------------------------------Koledar -->
+      <section id="koledar">
+<h1>Skupni koledar</h1>
+    <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=2&ctz=Europe%2FBelgrade&mode=WEEK&showTz=0&showCalendars=0&showPrint=0&showDate=0&title&showTitle=0&src=NWI4ZmNkYjVlMDdjN2UwZTkyYmYyNDRlMGM3NTRhNzlkOTA1Mzg1Mzc5MGQxYWQxNjVhYTIyMjhkOTQ3Yzc5ZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%2333b679" style="border:solid 1px #777" width="1000" height="800" frameborder="0" scrolling="no"></iframe>
     <div class="space-y-16">
-      <section>
+</section>
+
+
+
+<!----------------------------------------------------Ljudje -->
+<section id="ljudje" class="p-4 sm:p-6">
+ <h1>Ljudje</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4 md:gap-6">
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={katja_gruden}
+    alt="Katja Gruden"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Katja Gruden</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Gerbičeva
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">💃 Salsa</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">⛰ Hribi</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={lukakopajtic}
+    alt="Luka Kopajtič"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Luka Kopajtič</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Gerbičeva
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">⛰ Hribi</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🧗 Plezanje</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={petra_morgan}
+    alt="Petra Morgan"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Petra Morgan</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Črnuče
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏐 Odbojka</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🚴 Kolesarjenje</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={jakob_plahutnik}
+    alt="Jakob Plahutnik"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jakob Plahutnik</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Črnuče
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏐 Odbojka</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🚴 Kolesarjenje</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={jona_novljan}
+    alt="Jona Novljan"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jona Novljan</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Vrhovci
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={ana_rogelj}
+    alt="Ana Rogelj"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Ana Rogelj</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Vrhovci
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={jaka_fefer}
+    alt="Jaka Fefer"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Jaka Fefer</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Vrhnika
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={tilen_tkalec}
+    alt="Tilen Tkalec"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Tilen Tkalec</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Črnuče
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 1</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder 2</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={nejc_ahtik}
+    alt="Nejc Ahtik"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Nejc Ahtik</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Zagreb / Ljubljana
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏋️ Fitnes</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🧭 Orientacija</span>
+  </div>
+</div>
+
+<!--Človek -->
+<div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-4 flex flex-col items-center text-center">
+  <Image
+    src={eva_hajsek}
+    alt="Eva Hajšek"
+    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover flex-shrink-0 mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-bold text-gray-900 dark:text-neutral-100 text-2xl mb-1">Eva Hajšek</h3>
+  <p class="flex items-center text-gray-600 dark:text-neutral-300 mb-4">
+    <svg class="w-4 h-4 mr-1 text-gray-500 dark:text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clipRule="evenodd"/>
+    </svg>
+    Šiška
+  </p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏃 Tek</span>
+    <span class="border border-gray-300 dark:border-neutral-500 text-gray-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-full whitespace-nowrap">🏷 Placeholder</span>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <section>
         <article class="space-y-4">
           <p class="animate">
             I am a minimal, seo friendly, accessible portfolio and blog for developers. 
@@ -153,7 +409,8 @@ const work = await Promise.all(
             </Link>
           </li>
         </ul>
-      </section>
+      </section>-->
+    </div>
     </div>
   </Container>
 </PageLayout>
