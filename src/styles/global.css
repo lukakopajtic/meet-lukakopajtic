@@ -32,8 +32,8 @@ h2 {
 }
 
 header {
-  @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/25;
+  @apply fixed top-0 left-0 right-0 z-50 py-3 border border-black/10 dark:border-white/10;
+  @apply bg-white dark:bg-black;
   @apply backdrop-blur-sm saturate-200;
 }
 
